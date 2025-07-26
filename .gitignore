@@ -1,0 +1,5 @@
+*.pyc
+zumic.egg-info
+build/
+dist/
+dump.zdb
