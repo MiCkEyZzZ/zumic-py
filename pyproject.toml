@@ -21,8 +21,3 @@ pytest-mock = "^3.14"
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.scripts]
-test = "pytest"
-lint = "ruff check zumic"
-typecheck = "mypy zumic"
