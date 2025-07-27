@@ -1,0 +1,33 @@
+name: Enhancement
+description: Suggest an enhancement or new feature for the Zumic Python client
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: What type of enhancement is this for the Zumic Python client?
+      multiple: true
+      options:
+        - API improvement
+        - Configuration
+        - Performance
+        - Refactor
+        - Tech debt reduction
+        - User experience
+        - Other
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What does the enhancement do?
+      description: |
+        Provide a high-level overview of how you
+        suggest improving the Zumic Python client functionality.
+
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Implementation ideas or challenges
+      description: |
+        Share any ideas on how to implement this enhancement or
+        describe potential challenges you foresee.
