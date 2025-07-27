@@ -3,3 +3,10 @@ zumic.egg-info
 build/
 dist/
 dump.zdb
+doc
+.ropeproject
+poetry.lock
+.ruff_cache
+.mypy_cache
+.pytest_cache
+__pycache__

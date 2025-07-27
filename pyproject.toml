@@ -1,18 +1,28 @@
-[project]
-name = "zumic-py"
+[tool.poetry]
+name = "zumic"
 version = "0.1.0"
 description = "Python client for Zumic database and key-value store"
-readme = "README.md"
+authors = ["mickeyzzz <zedmfix@gmail.com>"]
 license = "MIT"
-requires-python = ">=3.13"
-authors = [{ name = "mickeyzzz", email = "zedmfix@gmail.com" }]
+readme = "README.md"
 keywords = ["Zumic", "database", "key-value-store"]
-dependencies = []
-
-[tool.poetry]
 packages = [{ include = "zumic" }]
 
+[tool.poetry.dependencies]
+python = ">=3.10"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2"
+mypy = "^1.9"
+ruff = "^0.4"
+coverage = "^7.5"
+pytest-mock = "^3.14"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+test = "pytest"
+lint = "ruff check zumic"
+typecheck = "mypy zumic"
