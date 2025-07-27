@@ -1,0 +1,16 @@
+# Zumic CODEOWNERS
+
+# Global owner (весь проект)
+* @mickeyzzz
+
+# GitHub workflows
+.github/workflows/ @mickeyzzz
+
+# Исходный код
+zumic/ @mickeyzzz
+
+# Тесты
+tests/ @mickeyzzz
+
+# Документация
+doc/ @mickeyzzz

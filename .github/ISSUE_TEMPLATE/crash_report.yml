@@ -1,0 +1,56 @@
+name: Crash report
+description: Submit a crash report for the Zumic Python client
+title: "[CRASH] <short description>"
+labels: ["crash"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ⚠️ **Notice!**
+        - This issue tracker is for crashes and unexpected exceptions in the Python client for Zumic.
+        - If the issue is in the Zumic server itself, please report it in the corresponding repository.
+
+        Please provide as much detail as possible to help us diagnose the issue.
+
+  - type: textarea
+    id: crash_traceback
+    attributes:
+      label: Crash traceback
+      description: |
+        Paste the full Python traceback here. Include any relevant error messages.
+      placeholder: |
+        ```
+        Traceback (most recent call last):
+          File "example.py", line 10, in <module>
+            client.set("foo", "bar")
+        ConnectionError: Failed to connect to 127.0.0.1:6379
+        ```
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Environment and context
+      description: |
+        Please include the following:
+        1. OS and Python version
+        2. How you're using the client (e.g. script, CLI, REPL)
+        3. Zumic server version (if relevant)
+      placeholder: |
+        1. Ubuntu 22.04, Python 3.12
+        2. Script calling client.set()
+        3. Zumic server version 0.6.1
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce (optional)
+      description: If the crash can be reproduced, describe the minimal steps.
+      placeholder: |
+        1. Start the server on port 9999
+        2. Run the Python client with a basic set/get call
+        3. Observe crash

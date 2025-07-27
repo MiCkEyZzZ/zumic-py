@@ -1,0 +1,39 @@
+name: Bug report
+description: Report a bug in the Zumic Python client
+title: "[BUG]"
+labels: [bug]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug in the Zumic Python client! Please fill out the template below to help us understand and fix the issue.
+
+  - type: input
+    id: description
+    attributes:
+      label: What went wrong?
+      description: Describe the bug in detail.
+      placeholder: The client crashed when I called `client.get("foo")`…
+
+  - type: input
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: List the minimal steps to reproduce the issue.
+      placeholder: |
+        1. Import `Client` from `zumic`
+        2. Connect to server
+        3. Run `client.get("foo")`
+        4. See traceback
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python version, client version, server version (if relevant), etc.
+      placeholder: |
+        - OS: Ubuntu 22.04
+        - Python: 3.11.4
+        - zumic-py: 0.1.0
+        - zumic server: 0.6.1 (if used)
