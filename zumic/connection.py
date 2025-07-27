@@ -5,8 +5,11 @@ from zumic.exceptions import ConnectionError, InvalidResponse, ResponseError
 
 CRLF = b"\r\n"
 
+
 class Connection:
-    def __init__(self, host: str = "localhost", port: int = 6379, timeout: Optional[float] = None):
+    def __init__(
+        self, host: str = "localhost", port: int = 6379, timeout: Optional[float] = None
+    ):
         self.host = host
         self.port = port
         self.timeout = timeout
@@ -16,10 +19,14 @@ class Connection:
         if self.__sock:
             return
         try:
-            self.__sock = socket.create_connection((self.host, self.port), timeout=self.timeout)
+            self.__sock = socket.create_connection(
+                (self.host, self.port), timeout=self.timeout
+            )
         except (socket.timeout, socket.error) as e:
             # Декодируем байты для вывода в строку
-            raise ConnectionError(f"Не удалось подключиться к {self.host}:{self.port}") from e
+            raise ConnectionError(
+                f"Не удалось подключиться к {self.host}:{self.port}"
+            ) from e
 
     def disconnect(self):
         if self.__sock:
@@ -85,4 +92,6 @@ class Connection:
             raise ResponseError(payload)
         else:
             # Декодируем prefix, чтобы в сообщении была строка, а не байты
-            raise InvalidResponse(f"Неизвестный префикс: {prefix.decode(errors='replace')}")
+            raise InvalidResponse(
+                f"Неизвестный префикс: {prefix.decode(errors='replace')}"
+            )

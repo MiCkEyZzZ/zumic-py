@@ -1,5 +1,6 @@
 from typing import Protocol, Union
 
+
 class ConnectionProtocol(Protocol):
     def send_command(self, *args: Union[str, bytes]) -> None: ...
     def read_response(self) -> Union[str, int, None]: ...

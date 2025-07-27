@@ -3,6 +3,7 @@ from zumic.connection import Connection
 from zumic.connection_protocol import ConnectionProtocol
 from zumic.exceptions import InvalidResponse, ResponseError, ConnectionError
 
+
 class Client:
     def __init__(
         self,
