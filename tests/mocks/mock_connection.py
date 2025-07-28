@@ -1,27 +1,27 @@
-from typing import Union
-from zumic.connection_protocol import ConnectionProtocol
+from typing import Union, Any
 
-class MockConnection(ConnectionProtocol):
+class MockConnection:
     def __init__(self):
-        self.store = {}
+        self.commands = []
+        self.responses = []
+        self.connected = True
 
-    def send_command(self, *args: Union[str, bytes]):
-        self.last_command = [a.decode() if isinstance(a, bytes) else a for a in args]
+    def connect(self):
+        self.connected = True
 
-    def read_response(self):
-        cmd = self.last_command
-        if cmd[0] == "SET":
-            self.store[cmd[1]] = cmd[2]
-            return "OK"
-        elif cmd[0] == "GET":
-            return self.store.get(cmd[1])
-        elif cmd[0] == "DEL":
-            return int(self.store.pop(cmd[1], None) is not None)
-        elif cmd[0] == "EXISTS":
-            return int(cmd[1] in self.store)
-        elif cmd[0] == "PING":
-            return "PONG"
+    def is_connected(self) -> bool:
+        return self.connected
+
+    def send_command(self, *args: Any) -> None:
+        self.commands.append(args)
+
+    def read_response(self) -> Union[str, int, None]:
+        if self.responses:
+            return self.responses.pop(0)
         return None
 
     def disconnect(self):
-        pass
+        self.connected = False
+
+    def set_responses(self, responses):
+        self.responses = responses[:]
